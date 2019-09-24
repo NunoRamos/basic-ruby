@@ -47,7 +47,8 @@ module Database
     # Your code..
   end
 
-  def delete
-    # Your code..
+  def delete(is_hard)
+    is_hard? return 200
+    400
   end
 end

@@ -24,8 +24,15 @@ put '/:id' do
   #Update contact with new info
 end
 
-delete '/:id' do
-  contact_id = params[:id]
+delete '/hard/:id' do
+  contact_id = params[:name]
+  push = JSON.parse(request.body.read)
+  puts "I got some JSON: #{push.inspect}"
+  #Hard delete contact
+end
+
+delete '/soft/:id' do
+  contact_id = params[:name]
   push = JSON.parse(request.body.read)
   puts "I got some JSON: #{push.inspect}"
   #Hard delete contact
