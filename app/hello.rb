@@ -17,10 +17,10 @@ get '/:id' do
 end
 
 put '/:id' do
-  contact_id = params[:id]
-  push = JSON.parse(request.body.read)
-  puts "I got some JSON: #{push.inspect}"
   #Update contact with new info
+  contact_id = params[:id]
+  data = JSON.parse(request.body.read)
+  Database.update(contact_id,data)
 end
 
 delete '/:id' do

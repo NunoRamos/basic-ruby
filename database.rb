@@ -23,6 +23,13 @@ module Database
       }
     end
 
+    def update(data)
+      @name = data["name"] unless data["name"].nil?
+      @email = data["email"] unless data["email"].nil?
+      @phone = data["phone"] unless data["phone"].nil?
+      @company = data["company"] unless data["company"].nil?
+    end
+
   end
 
   @contacts = [
@@ -44,8 +51,10 @@ module Database
     # Your code..
   end
 
-  def update
-    # Your code..
+  def update(request_id,data)
+    # Updates the information from a given contact id
+    @contacts.map { |contact| contact.update(data) if contact.id == request_id }
+    200
   end
 
   def delete
