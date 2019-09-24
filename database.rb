@@ -19,8 +19,7 @@ module Database
         name: @name,
         email: @email,
         phone: @phone,
-        company: @company,
-        is_delete: @is_deleted
+        company: @company
       }
     end
 
@@ -41,7 +40,11 @@ module Database
   ]
 
   def all
-    @contacts.map { |contact| contact.to_hash }
+    @contacts.select { |contact| !contact.is_deleted}.map { |contact| contact.to_hash }
+  end
+
+  def get_deleted_contacts
+    @contacts.select { |contact| contact.is_deleted}.map { |contact| contact.to_hash }
   end
 
   def find(id)
