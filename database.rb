@@ -1,10 +1,14 @@
 module Database
   extend self
 
+  @id = 1
+
   class Contact
     attr_accessor :name, :email, :phone, :company, :is_deleted
 
     def initialize(name, email, phone, company)
+        @id = @id
+        @id += 1
         @name = name
         @email = email
         @phone = phone

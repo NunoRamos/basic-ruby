@@ -10,20 +10,20 @@ post '/create' do
   # Create contact in database
 end
 
-get '/:name' do
-  contact_name = params[:name]
+get '/:id' do
+  contact_id = params[:name]
   #Get contact by name
 end
 
-put '/:name' do
-  contact_name = params[:name]
+put '/:id' do
+  contact_id = params[:name]
   push = JSON.parse(request.body.read)
   puts "I got some JSON: #{push.inspect}"
   #Update contact with new info
 end
 
-delete '/:name' do
-  contact_name = params[:name]
+delete '/:id' do
+  contact_id = params[:name]
   push = JSON.parse(request.body.read)
   puts "I got some JSON: #{push.inspect}"
   #Hard delete contact
