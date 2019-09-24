@@ -4,7 +4,7 @@ module Database
   @contacts = [1, 2, 3]
 
   def all
-    # Your code..
+    return @contacts
   end
 
   def find
