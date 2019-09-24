@@ -2,7 +2,7 @@ module Database
   extend self
 
   class Contact
-    attr_accessor :name, :email, :phone, :company, :is_deleted
+    attr_accessor :id, :name, :email, :phone, :company, :is_deleted
 
     def initialize(name, email, phone, company)
         @id = SecureRandom.hex(5)
@@ -15,10 +15,12 @@ module Database
 
     def to_hash
       {
-        name: self.name,
-        email: self.email,
-        phone: self.phone,
-        company: self.company
+        id: @id,
+        name: @name,
+        email: @email,
+        phone: @phone,
+        company: @company,
+        is_delete: @is_deleted
       }
     end
 
@@ -35,8 +37,8 @@ module Database
     @contacts.map { |contact| contact.to_hash }
   end
 
-  def find
-    # Your code..
+  def find(id)
+    @contacts.select { |contact| contact.id = id }.first.to_hash
   end
 
   def store
@@ -47,8 +49,15 @@ module Database
     # Your code..
   end
 
-  def delete(is_hard)
-    is_hard? return 200
-    400
+  def delete(contact_name, is_hard)
+    if is_hard
+      index = @contacts.find_index { |element| element.name == contact_name }
+      return false if index.nil?
+      @contacts.delete_at (index)
+    else
+      contact = @contacts.find { |contact| contact.name == contact_name }
+      return false if contact.nil?
+      contact.is_deleted = true
+    end
   end
 end

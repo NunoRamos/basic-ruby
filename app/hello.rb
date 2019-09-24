@@ -12,7 +12,6 @@ end
 
 get '/:id' do
   contact_id = params[:id]
-  #Get contact by name
 
   Database.find(contact_id).to_json
 end
@@ -24,16 +23,16 @@ put '/:id' do
   #Update contact with new info
 end
 
-delete '/hard/:id' do
-  contact_id = params[:name]
-  push = JSON.parse(request.body.read)
-  puts "I got some JSON: #{push.inspect}"
-  #Hard delete contact
+delete '/hard/:name' do
+  contact_name = params[:name]
+  Database.delete(contact_name, true)
+
+  204
 end
 
-delete '/soft/:id' do
-  contact_id = params[:name]
-  push = JSON.parse(request.body.read)
-  puts "I got some JSON: #{push.inspect}"
-  #Hard delete contact
+delete '/soft/:name' do
+  contact_name = params[:name]
+  Database.delete(contact_name, false)
+
+  204
 end
