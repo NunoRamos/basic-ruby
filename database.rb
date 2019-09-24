@@ -25,7 +25,7 @@ module Database
 
   @contacts = [
     Contact.new("Inês", "ines@princesa.com", "913454345", "Despedida"), 
-    Contact.new("Nuno", "nuno@princeso.com", "913432456", "Taldesk"),
+    Contact.new("Nuno", "nuno@princeso.com", "913432456", "Talkdesk"),
     Contact.new("Ricardo", "ricardo@princeso.com", "913456256", "Taldesk"),
     Contact.new("David", "david@princeso.com", "913456256", "Taldesk")
   ]
