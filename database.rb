@@ -1,14 +1,11 @@
 module Database
   extend self
 
-  @global_id = 1
-
   class Contact
     attr_accessor :name, :email, :phone, :company, :is_deleted
 
     def initialize(name, email, phone, company)
-        @id = @global_id
-        @global_id += 1
+        @id = SecureRandom.hex(5)
         @name = name
         @email = email
         @phone = phone
