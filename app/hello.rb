@@ -8,13 +8,13 @@ post '/create' do
   push = JSON.parse(request.body.read)
   puts "I got some JSON: #{push.inspect}"
   # Create contact in database
+  Database.store(push)
+
 end
 
 get '/:id' do
   contact_id = params[:id]
   #Get contact by name
-
-  Database.find(contact_id).to_json
 end
 
 put '/:id' do
@@ -25,7 +25,7 @@ put '/:id' do
 end
 
 delete '/:id' do
-  contact_id = params[:id]
+  contact_id = params[:name]
   push = JSON.parse(request.body.read)
   puts "I got some JSON: #{push.inspect}"
   #Hard delete contact

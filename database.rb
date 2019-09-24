@@ -28,7 +28,7 @@ module Database
     Contact.new("Inês", "ines@princesa.com", "913454345", "Despedida"),
     Contact.new("Nuno", "nuno@princeso.com", "913432456", "Talkdesk"),
     Contact.new("Ricardo", "ricardo@princeso.com", "913456256", "Taldesk"),
-    Contact.new("David", "david@princeso.com", "913456256", "Taldesk")
+    Contact.new("David", "david@princeso.com", "91ß3456256", "Taldesk")
   ]
 
   def all
@@ -39,8 +39,9 @@ module Database
     # Your code..
   end
 
-  def store
-    # Your code..
+  def store(data)
+    c = Contact.new(data["name"], data["email"], data["phone"], data["company"])
+    @contacts << c
   end
 
   def update
