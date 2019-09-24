@@ -12,7 +12,6 @@ end
 
 get '/:id' do
   contact_id = params[:id]
-  #Get contact by name
 
   Database.find(contact_id).to_json
 end

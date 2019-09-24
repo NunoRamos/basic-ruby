@@ -2,7 +2,7 @@ module Database
   extend self
 
   class Contact
-    attr_accessor :name, :email, :phone, :company, :is_deleted
+    attr_accessor :id, :name, :email, :phone, :company, :is_deleted
 
     def initialize(name, email, phone, company)
         @id = SecureRandom.hex(5)
@@ -15,10 +15,11 @@ module Database
 
     def to_hash
       {
-        name: self.name,
-        email: self.email,
-        phone: self.phone,
-        company: self.company
+        id: @id,
+        name: @name,
+        email: @email,
+        phone: @phone,
+        company: @company
       }
     end
 
@@ -35,8 +36,8 @@ module Database
     @contacts.map { |contact| contact.to_hash }
   end
 
-  def find
-    # Your code..
+  def find(id)
+    @contacts.select { |contact| contact.id = id }.first.to_hash
   end
 
   def store
